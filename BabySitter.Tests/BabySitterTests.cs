@@ -160,38 +160,38 @@ namespace BabySitter.Tests
         #endregion
 
 
-        #region Validate 
+        #region Validate Start/End Time Business Rules
 
         [Fact]
-        public void WhenAStartTimeIsPassedAndIsBeforeEarliestStart_ShouldReturnTrue()
+        public void WhenAStartTimeIsPassedAndIsAfterEarliestStart_ShouldReturnTrue()
         {
             TimeSpan startTime = new TimeSpan(17, 00, 00);
             Assert.True(_service.IsStartTimeValid(startTime));
         }
 
         [Fact]
-        public void WhenAStartTimeIsPassedAndIsBeforeEarliestStart2_ShouldReturnTrue()
+        public void WhenAStartTimeIsPassedAndIsAfterEarliestStart2_ShouldReturnTrue()
         {
             TimeSpan startTime = new TimeSpan(17, 01, 00);
             Assert.True(_service.IsStartTimeValid(startTime));
         }
 
         [Fact]
-        public void WhenAStartTimeIsPassedAndIsBeforeEarliestStart3_ShouldReturnTrue()
+        public void WhenAStartTimeIsPassedAndIsAfterEarliestStart3_ShouldReturnTrue()
         {
             TimeSpan startTime = new TimeSpan(19, 00, 00);
             Assert.True(_service.IsStartTimeValid(startTime));
         }
 
         [Fact]
-        public void WhenAStartTimeIsPassedAndIsBeforeEarliestStart4_ShouldReturnTrue()
+        public void WhenAStartTimeIsPassedAndIsAfterEarliestStart4_ShouldReturnTrue()
         {
             TimeSpan startTime = new TimeSpan(23, 55, 00);
             Assert.True(_service.IsStartTimeValid(startTime));
         }
 
         [Fact]
-        public void WhenAStartTimeIsPassedAndIsBeforeEarliestStart5_ShouldReturnTrue()
+        public void WhenAStartTimeIsPassedAndIsAfterEarliestStart5_ShouldReturnTrue()
         {
             TimeSpan startTime = new TimeSpan(2, 55, 00);
             Assert.True(_service.IsStartTimeValid(startTime));
@@ -216,6 +216,62 @@ namespace BabySitter.Tests
         {
             TimeSpan startTime = new TimeSpan(12, 55, 00);
             Assert.False(_service.IsStartTimeValid(startTime));
+        }
+
+        [Fact]
+        public void WhenAEndTimeIsPassedAndIsBeforeLatestEnd_ShouldReturnTrue()
+        {
+            TimeSpan endTime = new TimeSpan(3, 59, 00);
+            Assert.True(_service.IsEndTimeValid(endTime));
+        }
+
+        [Fact]
+        public void WhenAEndTimeIsPassedAndIsBeforeLatestEnd2_ShouldReturnTrue()
+        {
+            TimeSpan endTime = new TimeSpan(1, 01, 00);
+            Assert.True(_service.IsEndTimeValid(endTime));
+        }
+
+        [Fact]
+        public void WhenAEndTimeIsPassedAndIsBeforeLatestEnd3_ShouldReturnTrue()
+        {
+            TimeSpan endTime = new TimeSpan(2, 00, 00);
+            Assert.True(_service.IsEndTimeValid(endTime));
+        }
+
+        [Fact]
+        public void WhenAEndTimeIsPassedAndIsBeforeLatestEnd4_ShouldReturnTrue()
+        {
+            TimeSpan endTime = new TimeSpan(3, 55, 00);
+            Assert.True(_service.IsEndTimeValid(endTime));
+        }
+
+        [Fact]
+        public void WhenAEndTimeIsPassedAndIsBeforeLatestEnd5_ShouldReturnTrue()
+        {
+            TimeSpan endTime = new TimeSpan(19, 55, 00);
+            Assert.True(_service.IsEndTimeValid(endTime));
+        }
+
+        [Fact]
+        public void WhenAEndTimeIsPassedAndIsAfterLatestEnd_ShouldReturnFalse()
+        {
+            TimeSpan endTime = new TimeSpan(4, 01, 00);
+            Assert.False(_service.IsEndTimeValid(endTime));
+        }
+
+        [Fact]
+        public void WhenAEndTimeIsPassedAndIsAfterLatestEnd1_ShouldReturnFalse()
+        {
+            TimeSpan endTime = new TimeSpan(6, 55, 00);
+            Assert.False(_service.IsEndTimeValid(endTime));
+        }
+
+        [Fact]
+        public void WhenAEndTimeIsPassedAndIsAfterLatestEnd2_ShouldReturnFalse()
+        {
+            TimeSpan endTime = new TimeSpan(5, 55, 00);
+            Assert.False(_service.IsEndTimeValid(endTime));
         }
 
 
