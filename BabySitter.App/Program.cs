@@ -6,7 +6,9 @@ namespace BabySitter.App
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            Console.Write("When did you start work tonight? ");
+            var startTime = Console.ReadLine();
+            Console.WriteLine(startTime);
         }
     }
 }

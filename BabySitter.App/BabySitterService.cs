@@ -19,7 +19,10 @@ namespace BabySitter.App
             }
         }
 
-        
+        public bool IsInputTimeFormatValid(string inputTime)
+        {
+            return false;
+        }
 
     }
 }

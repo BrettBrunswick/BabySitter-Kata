@@ -13,6 +13,7 @@ namespace BabySitter.Tests
             _service = new BabySitterService();
         }
 
+
         #region Get Hours Worked
 
         [Fact]
@@ -72,6 +73,18 @@ namespace BabySitter.Tests
         }
 
         #endregion
+
+
+        #region Accept Correctly Formatted Time Input
+
+        [Fact]
+        public void WhenAStartTimeOrEndTimeIsPassedWithCorrectFormat_ShouldReturnTrue()
+        {
+            Assert.True(_service.IsInputTimeFormatValid("12:00:00"));
+        }
+
+        #endregion
+
 
     }
 
