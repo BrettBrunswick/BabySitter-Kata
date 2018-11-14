@@ -15,7 +15,7 @@ namespace BabySitter.App
 
         private readonly TimeSpan LATEST_END_TIME = new TimeSpan(4, 00, 00);
 
-        private readonly string[] VALID_TIME_FORMATS = { "hh\\:mm", "h\\:mm" };
+        private readonly string[] VALID_TIME_FORMATS = { "hh\\:mm", "h\\:mm",  "h\\:mm tt" };
         
         
         //Rounding up if worked more than a half hour.

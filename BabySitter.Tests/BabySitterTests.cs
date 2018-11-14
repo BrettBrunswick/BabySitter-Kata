@@ -157,6 +157,12 @@ namespace BabySitter.Tests
             Assert.True(_service.IsInputTimeFormatValid("03:29"));
         }
 
+        [Fact]
+        public void WhenAStartTimeOrEndTimeIsPassedWithCorrectFormat6_ShouldReturnTrue()
+        {
+            Assert.True(_service.IsInputTimeFormatValid("03:29 AM"));
+        }
+
         #endregion
 
 
