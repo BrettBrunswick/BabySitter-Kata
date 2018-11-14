@@ -21,7 +21,8 @@ namespace BabySitter.App
 
         public bool IsInputTimeFormatValid(string inputTime)
         {
-            return false;
+            TimeSpan placeHolder = new TimeSpan();
+            return TimeSpan.TryParse(inputTime, out placeHolder);
         }
 
     }
