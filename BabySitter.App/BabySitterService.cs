@@ -41,7 +41,7 @@ namespace BabySitter.App
 
         public bool IsStartTimeValid(TimeSpan startTime)
         {
-            return startTime >= EARLIEST_START_TIME;
+            return (startTime >= EARLIEST_START_TIME) || (startTime < LATEST_END_TIME);
         }
 
         public bool IsEndTimeValid(TimeSpan endTime)
