@@ -4,7 +4,6 @@ namespace BabySitter.App
 {
     public class BabySitterService
     {
-        private const int MINUTES_IN_HOUR = 60;
         
         public int GetNumberOfHoursWorked(TimeSpan startTime, TimeSpan endTime)
         {
