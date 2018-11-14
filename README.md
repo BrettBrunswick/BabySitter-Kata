@@ -2,21 +2,26 @@
 
 This is my take on Pillar Technology's Babysitter Payment Kata. You can read up on this specific kata [here](https://github.com/PillarTechnology/kata-babysitter).
 
-## Configuting Your Environment
+## Prerequisites
+- Familiarity and general knowledge of how to clone a repository and use Git.
+- [Git Tools Installed](https://git-scm.com/downloads)
+- [.NET Core Installed](https://dot.net/)
+- [Node.js Installed](https://nodejs.org/en/)
 
-Make sure you have .NET CLI Tools and .NET CLI SDK downloaded.
+### Configuting Your Environment
+
 ```
 dotnet restore
 ```
 
-### Running Tests
+#### Running Tests
 
 ```
-dotnet test Grocery-Checkout-Kata.Tests
+dotnet test BabySitter.Tests
 ```
 
-### Making Console Application
-To run the API use the following command:
+#### Running Console Application
+To run the Application execute the following command:
 ```
 dotnet run --project BabySitter.App
 ```

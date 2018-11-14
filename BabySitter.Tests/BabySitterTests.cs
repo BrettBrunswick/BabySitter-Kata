@@ -14,9 +14,9 @@ namespace BabySitter.Tests
         }
 
         [Fact]
-        public void Test1()
+        public void WhenATimeRangeIsPassedReturnsNumberOfHoursWorked_ShouldBe3()
         {
-            Assert.Equal(2, _service.GetNumberTwo());
+            Assert.Equal(3, _service.GetNumberOfHoursWorked());
         }
 
     }

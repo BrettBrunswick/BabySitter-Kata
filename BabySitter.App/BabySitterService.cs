@@ -5,9 +5,9 @@ namespace BabySitter.App
     public class BabySitterService
     {
         
-        public int GetNumberTwo()
+        public int GetNumberOfHoursWorked()
         {
-            return 2;
+            return 0;
         }
 
     }
