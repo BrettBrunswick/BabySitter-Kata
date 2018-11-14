@@ -358,6 +358,19 @@ namespace BabySitter.Tests
             Assert.False(_service.IsEndTimeAfterStartTime(startTime, endTime));
         }
 
+        #endregion
+
+
+        #region Turn string into TimeSpan
+
+        [Fact]
+        public void WhenValidStringIsPassedInReturnCorrectTimeSpan_ShouldReturnTrue()
+        {
+            string time = "";
+            TimeSpan shouldBeTime = new TimeSpan(17, 00, 00);
+            Assert.Equal(shouldBeTime, _service.GetTimeSpanFromString(time));
+        }
+
 
         #endregion
 
