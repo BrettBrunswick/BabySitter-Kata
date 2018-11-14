@@ -274,6 +274,30 @@ namespace BabySitter.Tests
             Assert.False(_service.IsEndTimeValid(endTime));
         }
 
+        [Fact]
+        public void WhenStartTimeAndEndTimeIsPassedAndEndIsAfterStart_ShouldReturnTrue()
+        {
+            TimeSpan startTime = new TimeSpan(17, 00, 00);
+            TimeSpan endTime = new TimeSpan(17, 01, 00);
+            Assert.True(_service.IsEndTimeAfterStartTime(startTime, endTime));
+        }
+
+        [Fact]
+        public void WhenStartTimeAndEndTimeIsPassedAndEndIsAfterStart2_ShouldReturnTrue()
+        {
+            TimeSpan startTime = new TimeSpan(17, 00, 00);
+            TimeSpan endTime = new TimeSpan(20, 01, 00);
+            Assert.True(_service.IsEndTimeAfterStartTime(startTime, endTime));
+        }
+
+        [Fact]
+        public void WhenStartTimeAndEndTimeIsPassedAndEndIsAfterStart3_ShouldReturnTrue()
+        {
+            TimeSpan startTime = new TimeSpan(17, 00, 00);
+            TimeSpan endTime = new TimeSpan(2, 00, 00);
+            Assert.True(_service.IsEndTimeAfterStartTime(startTime, endTime));
+        }
+
 
         #endregion
 
