@@ -75,7 +75,7 @@ namespace BabySitter.Tests
         #endregion
 
 
-        #region Check Format of Time Input
+        #region Validate Format of Time Input
 
         [Fact]
         public void WhenAStartTimeOrEndTimeIsPassedWithInCorrectFormat1_ShouldReturnFalse()
@@ -157,9 +157,69 @@ namespace BabySitter.Tests
             Assert.True(_service.IsInputTimeFormatValid("03:29"));
         }
 
-
         #endregion
 
+
+        #region Validate 
+
+        [Fact]
+        public void WhenAStartTimeIsPassedAndIsBeforeEarliestStart_ShouldReturnTrue()
+        {
+            TimeSpan startTime = new TimeSpan(17, 00, 00);
+            Assert.True(_service.IsStartTimeValid(startTime));
+        }
+
+        [Fact]
+        public void WhenAStartTimeIsPassedAndIsBeforeEarliestStart2_ShouldReturnTrue()
+        {
+            TimeSpan startTime = new TimeSpan(17, 01, 00);
+            Assert.True(_service.IsStartTimeValid(startTime));
+        }
+
+        [Fact]
+        public void WhenAStartTimeIsPassedAndIsBeforeEarliestStart3_ShouldReturnTrue()
+        {
+            TimeSpan startTime = new TimeSpan(19, 00, 00);
+            Assert.True(_service.IsStartTimeValid(startTime));
+        }
+
+        [Fact]
+        public void WhenAStartTimeIsPassedAndIsBeforeEarliestStart4_ShouldReturnTrue()
+        {
+            TimeSpan startTime = new TimeSpan(23, 55, 00);
+            Assert.True(_service.IsStartTimeValid(startTime));
+        }
+
+        [Fact]
+        public void WhenAStartTimeIsPassedAndIsBeforeEarliestStart5_ShouldReturnTrue()
+        {
+            TimeSpan startTime = new TimeSpan(2, 55, 00);
+            Assert.True(_service.IsStartTimeValid(startTime));
+        }
+
+        [Fact]
+        public void WhenAStartTimeIsPassedAndIsBeforeEarliestStart_ShouldReturnFalse()
+        {
+            TimeSpan startTime = new TimeSpan(16, 59, 00);
+            Assert.False(_service.IsStartTimeValid(startTime));
+        }
+
+        [Fact]
+        public void WhenAStartTimeIsPassedAndIsBeforeEarliestStart1_ShouldReturnFalse()
+        {
+            TimeSpan startTime = new TimeSpan(14, 55, 00);
+            Assert.False(_service.IsStartTimeValid(startTime));
+        }
+
+        [Fact]
+        public void WhenAStartTimeIsPassedAndIsBeforeEarliestStart2_ShouldReturnFalse()
+        {
+            TimeSpan startTime = new TimeSpan(12, 55, 00);
+            Assert.False(_service.IsStartTimeValid(startTime));
+        }
+
+
+        #endregion
 
     }
 
