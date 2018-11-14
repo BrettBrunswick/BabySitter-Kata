@@ -1,11 +1,14 @@
 using System;
+using System.Globalization;
 
 namespace BabySitter.App
 {
     public class BabySitterService
     {
 
-        private TimeSpan interval;
+        private TimeSpan OutTime;
+        
+        private DateTime OutDate;
 
         private readonly TimeSpan ONE_DAY = new TimeSpan(24, 00, 00);
 
@@ -15,7 +18,7 @@ namespace BabySitter.App
 
         private readonly TimeSpan LATEST_END_TIME = new TimeSpan(4, 00, 00);
 
-        private readonly string[] VALID_TIME_FORMATS = { "hh\\:mm", "h\\:mm",  "h\\:mm tt" };
+        private readonly string[] VALID_TIME_FORMATS = { "hh\\:mm", "h\\:mm",  "hh\\:mm tt", "h\\:mm tt" };
         
         
         //Rounding up if worked more than a half hour.
@@ -36,7 +39,8 @@ namespace BabySitter.App
 
         public bool IsInputTimeFormatValid(string inputTime)
         {
-            return (TimeSpan.TryParseExact(inputTime, VALID_TIME_FORMATS, null, out interval));
+            return (TimeSpan.TryParseExact(inputTime, VALID_TIME_FORMATS, null, out OutTime) ||
+                (DateTime.TryParseExact(inputTime, VALID_TIME_FORMATS, CultureInfo.CurrentCulture, DateTimeStyles.None, out OutDate)));
         }
 
         public bool IsStartTimeValid(TimeSpan startTime)

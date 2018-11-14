@@ -126,6 +126,18 @@ namespace BabySitter.Tests
             Assert.False(_service.IsInputTimeFormatValid("2:0"));
         }
 
+        [Fact]
+        public void WhenAStartTimeOrEndTimeIsPassedWithInCorrectFormat9_ShouldReturnFalse()
+        {
+            Assert.False(_service.IsInputTimeFormatValid("13:29 pm"));
+        }
+
+        [Fact]
+        public void WhenAStartTimeOrEndTimeIsPassedWithInCorrectFormat10_ShouldReturnFalse()
+        {
+            Assert.False(_service.IsInputTimeFormatValid("12:60 pm"));
+        }
+
 
         [Fact]
         public void WhenAStartTimeOrEndTimeIsPassedWithCorrectFormat1_ShouldReturnTrue()
@@ -161,6 +173,24 @@ namespace BabySitter.Tests
         public void WhenAStartTimeOrEndTimeIsPassedWithCorrectFormat6_ShouldReturnTrue()
         {
             Assert.True(_service.IsInputTimeFormatValid("03:29 AM"));
+        }
+
+        [Fact]
+        public void WhenAStartTimeOrEndTimeIsPassedWithCorrectFormat7_ShouldReturnTrue()
+        {
+            Assert.True(_service.IsInputTimeFormatValid("03:29 pm"));
+        }
+
+        [Fact]
+        public void WhenAStartTimeOrEndTimeIsPassedWithCorrectFormat8_ShouldReturnTrue()
+        {
+            Assert.True(_service.IsInputTimeFormatValid("03:29am"));
+        }
+
+        [Fact]
+        public void WhenAStartTimeOrEndTimeIsPassedWithCorrectFormat9_ShouldReturnTrue()
+        {
+            Assert.True(_service.IsInputTimeFormatValid("1:29 pm"));
         }
 
         #endregion
