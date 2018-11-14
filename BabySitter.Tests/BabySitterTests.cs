@@ -75,51 +75,87 @@ namespace BabySitter.Tests
         #endregion
 
 
-        #region Accept Correctly Formatted Time Input
+        #region Check Format of Time Input
 
         [Fact]
-        public void WhenAStartTimeOrEndTimeIsPassedWithCorrectFormat_ShouldReturnTrue()
+        public void WhenAStartTimeOrEndTimeIsPassedWithInCorrectFormat1_ShouldReturnFalse()
         {
-            Assert.True(_service.IsInputTimeFormatValid("12:00:00"));
+            Assert.False(_service.IsInputTimeFormatValid("24:00"));
         }
 
         [Fact]
-        public void WhenAStartTimeOrEndTimeIsPassedWithCorrectFormat2_ShouldReturnTrue()
+        public void WhenAStartTimeOrEndTimeIsPassedWithInCorrectFormat2_ShouldReturnFalse()
         {
-            Assert.True(_service.IsInputTimeFormatValid("12"));
+            Assert.False(_service.IsInputTimeFormatValid("12:00:00"));
         }
 
         [Fact]
-        public void WhenAStartTimeOrEndTimeIsPassedWithCorrectFormat3_ShouldReturnTrue()
+        public void WhenAStartTimeOrEndTimeIsPassedWithInCorrectFormat3_ShouldReturnFalse()
         {
-            Assert.True(_service.IsInputTimeFormatValid("12:00"));
+            Assert.False(_service.IsInputTimeFormatValid("12"));
         }
 
         [Fact]
-        public void WhenAStartTimeOrEndTimeIsPassedWithCorrectFormat4_ShouldReturnTrue()
+        public void WhenAStartTimeOrEndTimeIsPassedWithInCorrectFormat4_ShouldReturnFalse()
         {
-            Assert.True(_service.IsInputTimeFormatValid("04"));
+            Assert.False(_service.IsInputTimeFormatValid("04"));
         }
 
         [Fact]
-        public void WhenAStartTimeOrEndTimeIsPassedWithCorrectFormat5_ShouldReturnTrue()
+        public void WhenAStartTimeOrEndTimeIsPassedWithInCorrectFormat5_ShouldReturnFalse()
         {
-            Assert.True(_service.IsInputTimeFormatValid("24"));
+            Assert.False(_service.IsInputTimeFormatValid("24"));
         }
 
         [Fact]
-        public void WhenAStartTimeOrEndTimeIsPassedWithCorrectFormat_ShouldReturnFalse()
+        public void WhenAStartTimeOrEndTimeIsPassedWithInCorrectFormat6_ShouldReturnFalse()
         {
             Assert.False(_service.IsInputTimeFormatValid("25"));
         }
 
 
         [Fact]
-        public void WhenAStartTimeOrEndTimeIsPassedWithCorrectFormat2_ShouldReturnFalse()
+        public void WhenAStartTimeOrEndTimeIsPassedWithInCorrectFormat7_ShouldReturnFalse()
         {
             Assert.False(_service.IsInputTimeFormatValid("12000000"));
         }
 
+        [Fact]
+        public void WhenAStartTimeOrEndTimeIsPassedWithInCorrectFormat8_ShouldReturnFalse()
+        {
+            Assert.False(_service.IsInputTimeFormatValid("2:0"));
+        }
+
+
+        [Fact]
+        public void WhenAStartTimeOrEndTimeIsPassedWithCorrectFormat1_ShouldReturnTrue()
+        {
+            Assert.True(_service.IsInputTimeFormatValid("12:00"));
+        }
+
+        [Fact]
+        public void WhenAStartTimeOrEndTimeIsPassedWithCorrectFormat2_ShouldReturnTrue()
+        {
+            Assert.True(_service.IsInputTimeFormatValid("23:59"));
+        }
+
+        [Fact]
+        public void WhenAStartTimeOrEndTimeIsPassedWithCorrectFormat3_ShouldReturnTrue()
+        {
+            Assert.True(_service.IsInputTimeFormatValid("1:00"));
+        }
+
+        [Fact]
+        public void WhenAStartTimeOrEndTimeIsPassedWithCorrectFormat4_ShouldReturnTrue()
+        {
+            Assert.True(_service.IsInputTimeFormatValid("10:10"));
+        }
+
+        [Fact]
+        public void WhenAStartTimeOrEndTimeIsPassedWithCorrectFormat5_ShouldReturnTrue()
+        {
+            Assert.True(_service.IsInputTimeFormatValid("03:29"));
+        }
 
 
         #endregion

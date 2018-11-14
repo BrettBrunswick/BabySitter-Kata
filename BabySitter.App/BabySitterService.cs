@@ -4,6 +4,8 @@ namespace BabySitter.App
 {
     public class BabySitterService
     {
+
+        private TimeSpan interval;
         
         //Rounding up if worked more than a half hour.
         public int GetNumberOfHoursWorked(TimeSpan startTime, TimeSpan endTime)
@@ -21,8 +23,8 @@ namespace BabySitter.App
 
         public bool IsInputTimeFormatValid(string inputTime)
         {
-            TimeSpan placeHolder = new TimeSpan();
-            return TimeSpan.TryParse(inputTime, out placeHolder);
+            return (TimeSpan.TryParseExact(inputTime, "hh\\:mm", null, out interval) || 
+                    TimeSpan.TryParseExact(inputTime, "h\\:mm", null, out interval));
         }
 
     }
