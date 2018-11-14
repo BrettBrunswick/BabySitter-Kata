@@ -16,7 +16,9 @@ namespace BabySitter.Tests
         [Fact]
         public void WhenATimeRangeIsPassedReturnsNumberOfHoursWorked_ShouldBe3()
         {
-            Assert.Equal(3, _service.GetNumberOfHoursWorked());
+            TimeSpan startTime = new TimeSpan(17,00,00);
+            TimeSpan endTime = new TimeSpan(20,00,00);
+            Assert.Equal(3, _service.GetNumberOfHoursWorked(startTime, endTime));
         }
 
     }
