@@ -14,13 +14,13 @@ This is my take on Pillar Technology's Babysitter Payment Kata. You can read up 
 dotnet restore
 ```
 
-#### Running Tests
+### Running Tests
 
 ```
 dotnet test BabySitter.Tests
 ```
 
-#### Running Console Application
+### Running Console Application
 To run the Application execute the following command:
 ```
 dotnet run --project BabySitter.App
