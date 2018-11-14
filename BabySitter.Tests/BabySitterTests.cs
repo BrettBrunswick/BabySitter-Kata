@@ -29,6 +29,22 @@ namespace BabySitter.Tests
             Assert.Equal(4, _service.GetNumberOfHoursWorked(startTime, endTime));
         }
 
+        [Fact]
+        public void WhenAFractionalTimeRangeIsPassedReturnsNumberOfHoursWorked_ShouldRoundUpAndBe5()
+        {
+            TimeSpan startTime = new TimeSpan(17,29,00);
+            TimeSpan endTime = new TimeSpan(22,00,00);
+            Assert.Equal(5, _service.GetNumberOfHoursWorked(startTime, endTime));
+        }
+
+        [Fact]
+        public void WhenAFractionalTimeRangeIsPassedReturnsNumberOfHoursWorked_ShouldRoundUpAndBe4_2()
+        {
+            TimeSpan startTime = new TimeSpan(17,31,00);
+            TimeSpan endTime = new TimeSpan(22,00,00);
+            Assert.Equal(4, _service.GetNumberOfHoursWorked(startTime, endTime));
+        }
+
     }
 
 }
