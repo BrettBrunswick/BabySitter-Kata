@@ -1,6 +1,6 @@
 # Babsitter Kata
 
-This is my take on Pillar Technology's Checkout Order Total Kata. You can read up on this specific kata [here](https://github.com/PillarTechnology/kata-babysitter).
+This is my take on Pillar Technology's Babysitter Payment Kata. You can read up on this specific kata [here](https://github.com/PillarTechnology/kata-babysitter).
 
 ## Configuting Your Environment
 
