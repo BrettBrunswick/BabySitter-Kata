@@ -46,7 +46,7 @@ namespace BabySitter.App
 
         public bool IsEndTimeValid(TimeSpan endTime)
         {
-            return endTime <= LATEST_END_TIME;
+            return (endTime <= LATEST_END_TIME) || (endTime > EARLIEST_START_TIME);
         }
 
         public bool IsEndTimeAfterStartTime (TimeSpan startTime, TimeSpan endTime)
