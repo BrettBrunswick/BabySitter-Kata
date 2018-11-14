@@ -64,9 +64,9 @@ namespace BabySitter.App
             }
         }
 
-        public TimeSpan GetTimeSpanFromString(string time)
+        public TimeSpan GetTimeSpanFromString(string inputTime)
         {
-            throw new NotImplementedException();
+            return TimeSpan.Parse(inputTime);
         }
 
         #endregion

@@ -366,7 +366,7 @@ namespace BabySitter.Tests
         [Fact]
         public void WhenValidStringIsPassedInReturnCorrectTimeSpan_ShouldReturnTrue()
         {
-            string time = "";
+            string time = "17:00";
             TimeSpan shouldBeTime = new TimeSpan(17, 00, 00);
             Assert.Equal(shouldBeTime, _service.GetTimeSpanFromString(time));
         }
