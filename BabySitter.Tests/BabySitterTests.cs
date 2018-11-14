@@ -63,6 +63,14 @@ namespace BabySitter.Tests
             Assert.Equal(2, _service.GetNumberOfHoursWorked(startTime, endTime));
         }
 
+        [Fact]
+        public void WhenATimeRangeIsPassedWithEndTimeTheNextDayReturnsNumberOfHoursWorked_ShouldBe5()
+        {
+            TimeSpan startTime = new TimeSpan(23,30,00);
+            TimeSpan endTime = new TimeSpan(4,00,00);
+            Assert.Equal(5, _service.GetNumberOfHoursWorked(startTime, endTime));
+        }
+
         #endregion
 
     }
