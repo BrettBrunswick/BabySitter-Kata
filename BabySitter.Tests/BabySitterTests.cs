@@ -383,7 +383,47 @@ namespace BabySitter.Tests
         public void WhenValidStringIsPassedInReturnCorrectTimeSpan3_ShouldReturnTrue()
         {
             string time = "7:00 PM";
-            TimeSpan shouldBeTime = new TimeSpan(7, 00, 00);
+            TimeSpan shouldBeTime = new TimeSpan(19, 00, 00);
+            Assert.Equal(shouldBeTime, _service.GetTimeSpanFromString(time));
+        }
+
+        [Fact]
+        public void WhenValidStringIsPassedInReturnCorrectTimeSpan4_ShouldReturnTrue()
+        {
+            string time = "1:00 aM";
+            TimeSpan shouldBeTime = new TimeSpan(1, 00, 00);
+            Assert.Equal(shouldBeTime, _service.GetTimeSpanFromString(time));
+        }
+
+        [Fact]
+        public void WhenValidStringIsPassedInReturnCorrectTimeSpan5_ShouldReturnTrue()
+        {
+            string time = "08:00 PM";
+            TimeSpan shouldBeTime = new TimeSpan(20, 00, 00);
+            Assert.Equal(shouldBeTime, _service.GetTimeSpanFromString(time));
+        }
+
+        [Fact]
+        public void WhenValidStringIsPassedInReturnCorrectTimeSpan6_ShouldReturnTrue()
+        {
+            string time = "6:00am";
+            TimeSpan shouldBeTime = new TimeSpan(6, 00, 00);
+            Assert.Equal(shouldBeTime, _service.GetTimeSpanFromString(time));
+        }
+
+        [Fact]
+        public void WhenValidStringIsPassedInReturnCorrectTimeSpan7_ShouldReturnTrue()
+        {
+            string time = "12:00am";
+            TimeSpan shouldBeTime = new TimeSpan(0, 00, 00);
+            Assert.Equal(shouldBeTime, _service.GetTimeSpanFromString(time));
+        }
+
+        [Fact]
+        public void WhenValidStringIsPassedInReturnCorrectTimeSpan8_ShouldReturnTrue()
+        {
+            string time = "08:21 PM";
+            TimeSpan shouldBeTime = new TimeSpan(20, 21, 00);
             Assert.Equal(shouldBeTime, _service.GetTimeSpanFromString(time));
         }
 

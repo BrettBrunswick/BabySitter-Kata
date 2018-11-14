@@ -64,9 +64,27 @@ namespace BabySitter.App
             }
         }
 
+        #endregion
+
+
+        #region Convert Input to TimeSpan
+
         public TimeSpan GetTimeSpanFromString(string inputTime)
         {
-            return TimeSpan.Parse(inputTime);
+            if (TimeSpan.TryParseExact(inputTime, VALID_TIME_FORMATS, null, out OutTime))
+            {
+                return TimeSpan.Parse(inputTime);
+            }
+            else
+            {
+                return GetTimeSpanFromStringWithAMPMFormat(inputTime);
+            }
+        }
+
+        private TimeSpan GetTimeSpanFromStringWithAMPMFormat(string inputTime)
+        {
+            var date = DateTime.Parse(inputTime);
+            return date.TimeOfDay;
         }
 
         #endregion
