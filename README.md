@@ -6,7 +6,6 @@ This is my take on Pillar Technology's Babysitter Payment Kata. You can read up 
 - Familiarity and general knowledge of how to clone a repository and use Git.
 - [Git Tools Installed](https://git-scm.com/downloads)
 - [.NET Core Installed](https://dot.net/)
-- [Node.js Installed](https://nodejs.org/en/)
 
 ### Configuting Your Environment
 
@@ -14,13 +13,13 @@ This is my take on Pillar Technology's Babysitter Payment Kata. You can read up 
 dotnet restore
 ```
 
-### Running Tests
+### Run Tests
 
 ```
 dotnet test BabySitter.Tests
 ```
 
-### Running Console Application
+### Run Console Application
 To run the Application execute the following command:
 ```
 dotnet run --project BabySitter.App
