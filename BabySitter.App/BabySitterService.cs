@@ -21,7 +21,7 @@ namespace BabySitter.App
 
         private readonly string[] VALID_TIME_FORMATS = { "hh\\:mm", "h\\:mm",  "hh\\:mm tt", "h\\:mm tt", "hh\\:mmtt", "h\\:mmtt" };
 
-        private readonly List<Family> clients = new List<Family> 
+        private readonly List<Family> CLIENTS = new List<Family> 
             {
                 new Family
                 (
@@ -100,6 +100,7 @@ namespace BabySitter.App
         #endregion
 
 
+
         #region Convert Input to TimeSpan
 
         public TimeSpan GetTimeSpanFromString(string inputTime)
@@ -120,6 +121,17 @@ namespace BabySitter.App
             return date.TimeOfDay;
         }
 
+        #endregion
+
+
+
+        #region Data Retrieval
+
+        public bool IsValidFamily(string familyId)
+        {
+            throw new NotImplementedException();
+        }
+        
         #endregion
     }
 }

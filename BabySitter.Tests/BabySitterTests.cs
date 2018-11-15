@@ -14,6 +14,7 @@ namespace BabySitter.Tests
         }
 
 
+
         #region Get Hours Worked
 
         [Fact]
@@ -73,6 +74,8 @@ namespace BabySitter.Tests
         }
 
         #endregion
+
+
 
 
         #region Validate Format of Time Input
@@ -196,7 +199,13 @@ namespace BabySitter.Tests
         #endregion
 
 
+
+
+
         #region Validate Start/End Time Business Rules
+
+
+        // Validate Start Time.
 
         [Fact]
         public void WhenAStartTimeIsPassedAndIsAfterEarliestStart_ShouldReturnTrue()
@@ -254,6 +263,9 @@ namespace BabySitter.Tests
             Assert.False(_service.IsStartTimeValid(startTime));
         }
 
+
+        //Validate End Time.
+
         [Fact]
         public void WhenAEndTimeIsPassedAndIsBeforeLatestEnd_ShouldReturnTrue()
         {
@@ -310,6 +322,9 @@ namespace BabySitter.Tests
             Assert.False(_service.IsEndTimeValid(endTime));
         }
 
+
+        // Validate End Time is not before Start time.
+
         [Fact]
         public void WhenStartTimeAndEndTimeIsPassedAndEndIsAfterStart_ShouldReturnTrue()
         {
@@ -359,6 +374,9 @@ namespace BabySitter.Tests
         }
 
         #endregion
+
+
+
 
 
         #region Turn string into TimeSpan
@@ -427,8 +445,25 @@ namespace BabySitter.Tests
             Assert.Equal(shouldBeTime, _service.GetTimeSpanFromString(time));
         }
 
+        #endregion
+
+
+
+
+
+        #region Data Retrieval
+
+        // Retrie
+
+        [Fact]
+        public void WhenPassedAValidFamilyIdIsPassedReturnTrue_ShouldBeTrue()
+        {
+            string familyId = "A";
+            Assert.True(_service.IsValidFamily(familyId));
+        }
 
         #endregion
+
 
     }
 
