@@ -505,7 +505,7 @@ namespace BabySitter.Tests
             string familyId = "A";
             TimeSpan startTime = new TimeSpan(22, 00, 00);
             TimeSpan endTime = new TimeSpan(0, 00, 00);
-            Assert.Equal(35.0, _service.GetEarnings(familyId, startTime, endTime));
+            Assert.Equal(35.0, _service.GetTotalEarnings(familyId, startTime, endTime));
         }
 
         #endregion
