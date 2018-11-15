@@ -172,7 +172,7 @@ namespace BabySitter.App
                 endTimeToUse = endTime;
             }
 
-            return GetNumberOfHoursWorked(startTime, endTime) * payPeriod.PricePerHour;
+            return GetNumberOfHoursWorked(startTimeToUse, endTimeToUse) * payPeriod.PricePerHour;
         }
 
         private TimeSpan AddDayToTimeSpanIfInMorning (TimeSpan time)

@@ -497,6 +497,10 @@ namespace BabySitter.Tests
             Assert.False(_service.IsValidFamily(familyId));
         }
 
+        //Given a Family ID and StartTime and EndTime validate pay periods worked in.
+
+        
+
         //Given a Family ID Calculate Earnings
 
         [Fact]
@@ -542,6 +546,15 @@ namespace BabySitter.Tests
             TimeSpan startTime = new TimeSpan(17, 00, 00);
             TimeSpan endTime = new TimeSpan(21, 00, 00);
             Assert.Equal(48, _service.GetTotalEarnings(familyId, startTime, endTime));
+        }
+
+        [Fact]
+        public void WhenPassedFamilyAAndStartAndEndTimeReturnEarnings_ShouldBe35()
+        {
+            string familyId = "A";
+            TimeSpan startTime = new TimeSpan(22, 00, 00);
+            TimeSpan endTime = new TimeSpan(0, 00, 00);
+            Assert.Equal(35, _service.GetTotalEarnings(familyId, startTime, endTime));
         }
 
         #endregion
