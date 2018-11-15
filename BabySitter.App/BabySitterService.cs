@@ -132,7 +132,13 @@ namespace BabySitter.App
         {
             return CLIENTS.Any(id => id.Id.Equals(familyId.ToUpper()));
         }
-        
+
+        //Calculate Earnings
+        public double GetEarnings(string familyId, TimeSpan startTime, TimeSpan endTime)
+        {
+            throw new NotImplementedException();
+        }
+
         #endregion
     }
 }
