@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Globalization;
+using System.Linq;
 
 namespace BabySitter.App
 {
@@ -129,7 +130,7 @@ namespace BabySitter.App
 
         public bool IsValidFamily(string familyId)
         {
-            throw new NotImplementedException();
+            return CLIENTS.Any(id => id.Id.Equals(familyId.ToUpper()));
         }
         
         #endregion

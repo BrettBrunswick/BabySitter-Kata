@@ -453,13 +453,48 @@ namespace BabySitter.Tests
 
         #region Data Retrieval
 
-        // Retrie
+        // Validate Family Exists
 
         [Fact]
         public void WhenPassedAValidFamilyIdIsPassedReturnTrue_ShouldBeTrue()
         {
             string familyId = "A";
             Assert.True(_service.IsValidFamily(familyId));
+        }
+
+        [Fact]
+        public void WhenPassedAValidFamilyIdIsPassedReturnTrue2_ShouldBeTrue()
+        {
+            string familyId = "c";
+            Assert.True(_service.IsValidFamily(familyId));
+        }
+
+        [Fact]
+        public void WhenPassedAValidFamilyIdIsPassedReturnTrue3_ShouldBeTrue()
+        {
+            string familyId = "b";
+            Assert.True(_service.IsValidFamily(familyId));
+        }
+
+        [Fact]
+        public void WhenPassedAValidFamilyIdIsPassedReturnTrue_ShouldBeFalse()
+        {
+            string familyId = "d";
+            Assert.False(_service.IsValidFamily(familyId));
+        }
+
+        [Fact]
+        public void WhenPassedAValidFamilyIdIsPassedReturnTrue2_ShouldBeFalse()
+        {
+            string familyId = "AA";
+            Assert.False(_service.IsValidFamily(familyId));
+        }
+
+        [Fact]
+        public void WhenPassedAValidFamilyIdIsPassedReturnTrue3_ShouldBeFalse()
+        {
+            string familyId = " ";
+            Assert.False(_service.IsValidFamily(familyId));
         }
 
         #endregion
