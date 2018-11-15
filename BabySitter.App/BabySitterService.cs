@@ -137,8 +137,7 @@ namespace BabySitter.App
         public double GetTotalEarnings(string familyId, TimeSpan startTime, TimeSpan endTime)
         {
             double result = 0;
-            Family currentFamily = FAMILIES.First(x => x.Id.Equals(familyId.ToUpper()));
-            var payPeriodsBabySitterWorkedIn = GetPayPeriodsBabySitterWorkedIn(currentFamily, startTime, endTime);
+            var payPeriodsBabySitterWorkedIn = GetPayPeriodsBabySitterWorkedIn(familyId, startTime, endTime);
             
             foreach (var period in payPeriodsBabySitterWorkedIn)
             {
@@ -147,9 +146,9 @@ namespace BabySitter.App
             return result;
         }
 
-        public List<PayPeriod> GetPayPeriodsBabySitterWorkedIn(Family family, TimeSpan startTime, TimeSpan endTime)
+        public List<PayPeriod> GetPayPeriodsBabySitterWorkedIn(string familyId, TimeSpan startTime, TimeSpan endTime)
         {
-            return family.PayPeriods.Where(t => AddDayToTimeSpanIfInMorning(startTime) <= AddDayToTimeSpanIfInMorning(t.EndTime) && AddDayToTimeSpanIfInMorning(endTime) >= AddDayToTimeSpanIfInMorning(t.StartTime)).ToList();
+            return FAMILIES.First(x => x.Id.Equals(familyId)).PayPeriods.Where(t => AddDayToTimeSpanIfInMorning(startTime) <= AddDayToTimeSpanIfInMorning(t.EndTime) && AddDayToTimeSpanIfInMorning(endTime) >= AddDayToTimeSpanIfInMorning(t.StartTime)).ToList();
         }
 
         private double GetEarningsByPayPeriod(PayPeriod payPeriod, TimeSpan startTime, TimeSpan endTime)
