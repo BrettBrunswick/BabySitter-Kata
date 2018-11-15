@@ -503,9 +503,9 @@ namespace BabySitter.Tests
         public void WhenPassedAFamilyAndStartAndEndTimeReturnEarnings_ShouldBe35()
         {
             string familyId = "A";
-            TimeSpan startTime = new TimeSpan(22, 00, 00);
-            TimeSpan endTime = new TimeSpan(0, 00, 00);
-            Assert.Equal(35.0, _service.GetTotalEarnings(familyId, startTime, endTime));
+            TimeSpan startTime = new TimeSpan(17, 00, 00);
+            TimeSpan endTime = new TimeSpan(20, 00, 00);
+            Assert.Equal(45, _service.GetTotalEarnings(familyId, startTime, endTime));
         }
 
         #endregion
