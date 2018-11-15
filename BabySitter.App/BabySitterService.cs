@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Globalization;
 
 namespace BabySitter.App
@@ -19,7 +20,39 @@ namespace BabySitter.App
         private readonly TimeSpan LATEST_END_TIME = new TimeSpan(4, 00, 00);
 
         private readonly string[] VALID_TIME_FORMATS = { "hh\\:mm", "h\\:mm",  "hh\\:mm tt", "h\\:mm tt", "hh\\:mmtt", "h\\:mmtt" };
-        
+
+        private readonly List<Family> clients = new List<Family> 
+            {
+                new Family
+                (
+                    "A", 
+                    new List<PayPeriod>
+                    {
+                        (new PayPeriod (15, new TimeSpan(17, 00, 00), new TimeSpan(23, 00, 00))),
+                        (new PayPeriod (20, new TimeSpan(23, 00, 00), new TimeSpan(4, 00, 00)))
+                    }
+                ),
+                new Family
+                (
+                    "B", 
+                    new List<PayPeriod>
+                    {
+                        (new PayPeriod (12, new TimeSpan(17, 00, 00), new TimeSpan(22, 00, 00))),
+                        (new PayPeriod (8, new TimeSpan(22, 00, 00), new TimeSpan(0, 00, 00))),
+                        (new PayPeriod (16, new TimeSpan(0, 00, 00), new TimeSpan(4, 00, 00)))
+                    }
+                ),
+                new Family
+                (
+                    "C", 
+                    new List<PayPeriod>
+                    {
+                        (new PayPeriod (21, new TimeSpan(17, 00, 00), new TimeSpan(21, 00, 00))),
+                        (new PayPeriod (15, new TimeSpan(21, 00, 00), new TimeSpan(4, 00, 00)))
+                    }
+                ),
+            };
+
         
         //Rounding up if worked more than a half hour.
         public int GetNumberOfHoursWorked(TimeSpan startTime, TimeSpan endTime)
