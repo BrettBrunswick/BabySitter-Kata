@@ -497,14 +497,11 @@ namespace BabySitter.Tests
             Assert.False(_service.IsValidFamily(familyId));
         }
 
-        //Given a Family ID and StartTime and EndTime validate pay periods worked in.
-
-        
 
         //Given a Family ID Calculate Earnings
 
         [Fact]
-        public void WhenPassedAFamilyAndStartAndEndTimeReturnEarnings_ShouldBe45()
+        public void WhenPassedAFamilyAAndStartAndEndTimeReturnEarnings_ShouldBe45()
         {
             string familyId = "A";
             TimeSpan startTime = new TimeSpan(17, 00, 00);
@@ -513,7 +510,7 @@ namespace BabySitter.Tests
         }
 
          [Fact]
-        public void WhenPassedAFamilyAndStartAndEndTimeReturnEarnings_ShouldBe60()
+        public void WhenPassedAFamilyAAndStartAndEndTimeReturnEarnings_ShouldBe60()
         {
             string familyId = "A";
             TimeSpan startTime = new TimeSpan(01, 00, 00);
@@ -522,7 +519,7 @@ namespace BabySitter.Tests
         }
 
         [Fact]
-        public void WhenPassedAFamilyAndStartAndEndTimeReturnEarnings_ShouldBe80()
+        public void WhenPassedAFamilyAAndStartAndEndTimeReturnEarnings_ShouldBe80()
         {
             string familyId = "A";
             TimeSpan startTime = new TimeSpan(00, 00, 00);
@@ -531,12 +528,21 @@ namespace BabySitter.Tests
         }
 
         [Fact]
-        public void WhenPassedAFamilyAndStartAndEndTimeReturnEarnings_ShouldBe80_2()
+        public void WhenPassedAFamilyAAndStartAndEndTimeReturnEarnings_ShouldBe80_2()
         {
             string familyId = "A";
             TimeSpan startTime = new TimeSpan(00, 25, 00);
             TimeSpan endTime = new TimeSpan(04, 00, 00);
             Assert.Equal(80, _service.GetTotalEarnings(familyId, startTime, endTime));
+        }
+
+        [Fact]
+        public void WhenPassedFamilyAAndStartAndEndTimeReturnEarnings_ShouldBe35()
+        {
+            string familyId = "A";
+            TimeSpan startTime = new TimeSpan(22, 00, 00);
+            TimeSpan endTime = new TimeSpan(0, 00, 00);
+            Assert.Equal(35, _service.GetTotalEarnings(familyId, startTime, endTime));
         }
 
         [Fact]
@@ -549,13 +555,15 @@ namespace BabySitter.Tests
         }
 
         [Fact]
-        public void WhenPassedFamilyAAndStartAndEndTimeReturnEarnings_ShouldBe35()
+        public void WhenPassedFamilyBAndStartAndEndTimeReturnEarnings_ShouldBe44()
         {
-            string familyId = "A";
-            TimeSpan startTime = new TimeSpan(22, 00, 00);
-            TimeSpan endTime = new TimeSpan(0, 00, 00);
-            Assert.Equal(35, _service.GetTotalEarnings(familyId, startTime, endTime));
+            string familyId = "b";
+            TimeSpan startTime = new TimeSpan(21, 00, 00);
+            TimeSpan endTime = new TimeSpan(1, 00, 00);
+            Assert.Equal(44, _service.GetTotalEarnings(familyId, startTime, endTime));
         }
+
+
 
         #endregion
 

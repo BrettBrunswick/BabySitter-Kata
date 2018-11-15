@@ -54,20 +54,6 @@ namespace BabySitter.App
                 ),
             };
 
-        
-        //Rounding up if worked more than a half hour.
-        public int GetNumberOfHoursWorked(TimeSpan startTime, TimeSpan endTime)
-        {
-            var timeDifference = endTime.Subtract(startTime);
-            var timeWorked = AddDayToTimeSpanIfInMorning(timeDifference);
-            if (timeWorked.TotalHours % 1 >= 0.5)
-            {
-                return timeWorked.Add(ONE_HOUR).Hours;
-            } else
-            {
-                return timeWorked.Hours;
-            }
-        }
 
         #region Validate Input
 
@@ -133,6 +119,7 @@ namespace BabySitter.App
             return FAMILIES.Any(id => id.Id.Equals(familyId.ToUpper()));
         }
 
+
         //Calculate Earnings
         public double GetTotalEarnings(string familyId, TimeSpan startTime, TimeSpan endTime)
         {
@@ -146,9 +133,23 @@ namespace BabySitter.App
             return result;
         }
 
-        public List<PayPeriod> GetPayPeriodsBabySitterWorkedIn(string familyId, TimeSpan startTime, TimeSpan endTime)
+        //Rounding up if worked more than a half hour.
+        public int GetNumberOfHoursWorked(TimeSpan startTime, TimeSpan endTime)
         {
-            return FAMILIES.First(x => x.Id.Equals(familyId)).PayPeriods.Where(t => AddDayToTimeSpanIfInMorning(startTime) <= AddDayToTimeSpanIfInMorning(t.EndTime) && AddDayToTimeSpanIfInMorning(endTime) >= AddDayToTimeSpanIfInMorning(t.StartTime)).ToList();
+            var timeDifference = endTime.Subtract(startTime);
+            var timeWorked = AddDayToTimeSpanIfInMorning(timeDifference);
+            if (timeWorked.TotalHours % 1 >= 0.5)
+            {
+                return timeWorked.Add(ONE_HOUR).Hours;
+            } else
+            {
+                return timeWorked.Hours;
+            }
+        }
+
+        private List<PayPeriod> GetPayPeriodsBabySitterWorkedIn(string familyId, TimeSpan startTime, TimeSpan endTime)
+        {
+            return FAMILIES.First(x => x.Id.Equals(familyId.ToUpper())).PayPeriods.Where(t => AddDayToTimeSpanIfInMorning(startTime) <= AddDayToTimeSpanIfInMorning(t.EndTime) && AddDayToTimeSpanIfInMorning(endTime) >= AddDayToTimeSpanIfInMorning(t.StartTime)).ToList();
         }
 
         private double GetEarningsByPayPeriod(PayPeriod payPeriod, TimeSpan startTime, TimeSpan endTime)
@@ -181,5 +182,6 @@ namespace BabySitter.App
         }
 
         #endregion
+
     }
 }
