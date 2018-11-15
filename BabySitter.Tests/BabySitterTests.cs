@@ -563,6 +563,24 @@ namespace BabySitter.Tests
             Assert.Equal(44, _service.GetTotalEarnings(familyId, startTime, endTime));
         }
 
+        [Fact]
+        public void WhenPassedFamilyCAndStartAndEndTimeReturnEarnings_ShouldBe189()
+        {
+            string familyId = "c";
+            TimeSpan startTime = new TimeSpan(17, 30, 00);
+            TimeSpan endTime = new TimeSpan(4, 00, 00);
+            Assert.Equal(189, _service.GetTotalEarnings(familyId, startTime, endTime));
+        }
+
+        [Fact]
+        public void WhenPassedFamilyCAndStartAndEndTimeReturnEarnings_ShouldBe168()
+        {
+            string familyId = "c";
+            TimeSpan startTime = new TimeSpan(17, 31, 00);
+            TimeSpan endTime = new TimeSpan(4, 00, 00);
+            Assert.Equal(168, _service.GetTotalEarnings(familyId, startTime, endTime));
+        }
+
 
 
         #endregion
