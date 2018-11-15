@@ -157,8 +157,8 @@ namespace BabySitter.App
                     "A", 
                     new List<PayPeriod>
                     {
-                        (new PayPeriod (15, new TimeSpan(17, 00, 00), new TimeSpan(23, 00, 00))),
-                        (new PayPeriod (20, new TimeSpan(23, 00, 00), new TimeSpan(4, 00, 00)))
+                        (new PayPeriod (15, new TimeSpan(17, 00, 00), new TimeSpan(23, 00, 01))),
+                        (new PayPeriod (20, new TimeSpan(23, 00, 00), new TimeSpan(4, 00, 01)))
                     }
                 );
 
