@@ -22,7 +22,7 @@ namespace BabySitter.Tests
         {
             TimeSpan startTime = new TimeSpan(17,00,00);
             TimeSpan endTime = new TimeSpan(20,00,00);
-            Assert.Equal(3, _service.GetNumberOfHoursWorked(startTime, endTime));
+            Assert.Equal(3, _service.GetNumberOfHoursWorkedRoundedUp(startTime, endTime));
         }
 
         [Fact]
@@ -30,7 +30,7 @@ namespace BabySitter.Tests
         {
             TimeSpan startTime = new TimeSpan(17,01,00);
             TimeSpan endTime = new TimeSpan(21,00,00);
-            Assert.Equal(4, _service.GetNumberOfHoursWorked(startTime, endTime));
+            Assert.Equal(4, _service.GetNumberOfHoursWorkedRoundedUp(startTime, endTime));
         }
 
         [Fact]
@@ -38,7 +38,7 @@ namespace BabySitter.Tests
         {
             TimeSpan startTime = new TimeSpan(17,29,00);
             TimeSpan endTime = new TimeSpan(22,00,00);
-            Assert.Equal(5, _service.GetNumberOfHoursWorked(startTime, endTime));
+            Assert.Equal(5, _service.GetNumberOfHoursWorkedRoundedUp(startTime, endTime));
         }
 
         [Fact]
@@ -46,7 +46,7 @@ namespace BabySitter.Tests
         {
             TimeSpan startTime = new TimeSpan(17,31,00);
             TimeSpan endTime = new TimeSpan(22,00,00);
-            Assert.Equal(4, _service.GetNumberOfHoursWorked(startTime, endTime));
+            Assert.Equal(4, _service.GetNumberOfHoursWorkedRoundedUp(startTime, endTime));
         }
 
         [Fact]
@@ -54,7 +54,7 @@ namespace BabySitter.Tests
         {
             TimeSpan startTime = new TimeSpan(20,30,01);
             TimeSpan endTime = new TimeSpan(24,00,00);
-            Assert.Equal(3, _service.GetNumberOfHoursWorked(startTime, endTime));
+            Assert.Equal(3, _service.GetNumberOfHoursWorkedRoundedUp(startTime, endTime));
         }
 
         [Fact]
@@ -62,7 +62,7 @@ namespace BabySitter.Tests
         {
             TimeSpan startTime = new TimeSpan(23,00,00);
             TimeSpan endTime = new TimeSpan(25,00,00);
-            Assert.Equal(2, _service.GetNumberOfHoursWorked(startTime, endTime));
+            Assert.Equal(2, _service.GetNumberOfHoursWorkedRoundedUp(startTime, endTime));
         }
 
         [Fact]
@@ -70,7 +70,7 @@ namespace BabySitter.Tests
         {
             TimeSpan startTime = new TimeSpan(23,30,00);
             TimeSpan endTime = new TimeSpan(28,00,00);
-            Assert.Equal(5, _service.GetNumberOfHoursWorked(startTime, endTime));
+            Assert.Equal(5, _service.GetNumberOfHoursWorkedRoundedUp(startTime, endTime));
         }
 
         #endregion
@@ -498,7 +498,7 @@ namespace BabySitter.Tests
             string familyId = "A";
             TimeSpan startTime = new TimeSpan(17, 00, 00);
             TimeSpan endTime = new TimeSpan(20, 00, 00);
-            Assert.Equal(45, _service.GetTotalEarnings(familyId, startTime, endTime));
+            Assert.Equal(45, _service.GetTotalEarnings(true, familyId, startTime, endTime));
         }
 
          [Fact]
@@ -507,7 +507,7 @@ namespace BabySitter.Tests
             string familyId = "A";
             TimeSpan startTime = new TimeSpan(25, 00, 00);
             TimeSpan endTime = new TimeSpan(28, 00, 00);
-            Assert.Equal(60, _service.GetTotalEarnings(familyId, startTime, endTime));
+            Assert.Equal(60, _service.GetTotalEarnings(true, familyId, startTime, endTime));
         }
 
         [Fact]
@@ -516,7 +516,7 @@ namespace BabySitter.Tests
             string familyId = "A";
             TimeSpan startTime = new TimeSpan(24, 00, 00);
             TimeSpan endTime = new TimeSpan(28, 00, 00);
-            Assert.Equal(80, _service.GetTotalEarnings(familyId, startTime, endTime));
+            Assert.Equal(80, _service.GetTotalEarnings(true, familyId, startTime, endTime));
         }
 
         [Fact]
@@ -525,7 +525,7 @@ namespace BabySitter.Tests
             string familyId = "A";
             TimeSpan startTime = new TimeSpan(24, 25, 00);
             TimeSpan endTime = new TimeSpan(28, 00, 00);
-            Assert.Equal(80, _service.GetTotalEarnings(familyId, startTime, endTime));
+            Assert.Equal(80, _service.GetTotalEarnings(true, familyId, startTime, endTime));
         }
 
         [Fact]
@@ -534,7 +534,7 @@ namespace BabySitter.Tests
             string familyId = "A";
             TimeSpan startTime = new TimeSpan(22, 00, 00);
             TimeSpan endTime = new TimeSpan(24, 00, 00);
-            Assert.Equal(35, _service.GetTotalEarnings(familyId, startTime, endTime));
+            Assert.Equal(35, _service.GetTotalEarnings(true, familyId, startTime, endTime));
         }
 
         [Fact]
@@ -543,7 +543,7 @@ namespace BabySitter.Tests
             string familyId = "B";
             TimeSpan startTime = new TimeSpan(17, 00, 00);
             TimeSpan endTime = new TimeSpan(21, 00, 00);
-            Assert.Equal(48, _service.GetTotalEarnings(familyId, startTime, endTime));
+            Assert.Equal(48, _service.GetTotalEarnings(true, familyId, startTime, endTime));
         }
 
         [Fact]
@@ -552,7 +552,7 @@ namespace BabySitter.Tests
             string familyId = "b";
             TimeSpan startTime = new TimeSpan(21, 00, 00);
             TimeSpan endTime = new TimeSpan(25, 00, 00);
-            Assert.Equal(44, _service.GetTotalEarnings(familyId, startTime, endTime));
+            Assert.Equal(44, _service.GetTotalEarnings(true, familyId, startTime, endTime));
         }
 
         [Fact]
@@ -561,7 +561,7 @@ namespace BabySitter.Tests
             string familyId = "b";
             TimeSpan startTime = new TimeSpan(20, 29, 00);
             TimeSpan endTime = new TimeSpan(24, 29, 00);
-            Assert.Equal(40, _service.GetTotalEarnings(familyId, startTime, endTime));
+            Assert.Equal(40, _service.GetTotalEarnings(true, familyId, startTime, endTime));
         }
 
         [Fact]
@@ -570,7 +570,7 @@ namespace BabySitter.Tests
             string familyId = "b";
             TimeSpan startTime = new TimeSpan(20, 05, 00);
             TimeSpan endTime = new TimeSpan(27, 31, 00);
-            Assert.Equal(104, _service.GetTotalEarnings(familyId, startTime, endTime));
+            Assert.Equal(104, _service.GetTotalEarnings(true, familyId, startTime, endTime));
         }
 
         [Fact]
@@ -579,7 +579,7 @@ namespace BabySitter.Tests
             string familyId = "c";
             TimeSpan startTime = new TimeSpan(17, 45, 00);
             TimeSpan endTime = new TimeSpan(26, 00, 00);
-            Assert.Equal(138, _service.GetTotalEarnings(familyId, startTime, endTime));
+            Assert.Equal(138, _service.GetTotalEarnings(true, familyId, startTime, endTime));
         }
 
 
@@ -589,7 +589,7 @@ namespace BabySitter.Tests
             string familyId = "c";
             TimeSpan startTime = new TimeSpan(17, 30, 00);
             TimeSpan endTime = new TimeSpan(28, 00, 00);
-            Assert.Equal(189, _service.GetTotalEarnings(familyId, startTime, endTime));
+            Assert.Equal(189, _service.GetTotalEarnings(true, familyId, startTime, endTime));
         }
 
         [Fact]
@@ -598,7 +598,7 @@ namespace BabySitter.Tests
             string familyId = "c";
             TimeSpan startTime = new TimeSpan(17, 31, 00);
             TimeSpan endTime = new TimeSpan(28, 00, 00);
-            Assert.Equal(168, _service.GetTotalEarnings(familyId, startTime, endTime));
+            Assert.Equal(168, _service.GetTotalEarnings(true, familyId, startTime, endTime));
         }
 
 

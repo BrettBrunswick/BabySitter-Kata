@@ -18,6 +18,7 @@ namespace BabySitter.App
             while (isRunning)
             {
                 string familyIdInput = "";
+                string roundUpHoursInput ="";
                 string startTimeInput = "";
                 string endTimeInput = "";
                 TimeSpan startTime = new TimeSpan();
@@ -39,6 +40,11 @@ namespace BabySitter.App
                         Console.WriteLine("Oops. It appears " + familyIdInput + " is not one of your active clients.");
                     }
                 }
+
+                bool roundUpHours = false;
+                Console.WriteLine("Should we round up hours worked? (Enter Y for Yes. Enter anything else for No.): ");
+                roundUpHoursInput = Console.ReadLine();
+                if (roundUpHoursInput.ToUpper().Equals("Y")) roundUpHours = true;
 
                 bool isStartTimeInputValid = false;
                 while (!isStartTimeInputValid)
@@ -87,7 +93,7 @@ namespace BabySitter.App
                     }
                 }
 
-                double result = _service.GetTotalEarnings(familyIdInput, startTime, endTime);
+                double result = _service.GetTotalEarnings(roundUpHours, familyIdInput, startTime, endTime);
 
                 Console.WriteLine("Family " + familyIdInput + " owes you " + result.ToString("C") + " for your work tonight.");
 
@@ -102,34 +108,6 @@ namespace BabySitter.App
                 }             
             }
 
-
-
-
-
-
-            /* do 
-            {
-                Console.Write("What family did you work for tonight? (A, B, or C): ");
-                familyIdInput = Console.ReadLine();
-                
-            } while (!service.IsValidFamily(familyIdInput));
-
-            do 
-            {
-                Console.WriteLine("When did you start work? (No earlier than 5:00 PM) (Accepted formats: '17:00', '05:00PM', '10:00 AM'): ");
-                startTimeInput = Console.ReadLine();
-                startTime = service.GetTimeSpanFromString(startTimeInput);
-                
-            } while (!service.IsInputTimeFormatValid(startTimeInput) || !service.isStartTimeInputValid(startTime));
-
-            do 
-            {
-                Console.WriteLine("When did you leave work? (No later than 4:00 AM) (Accepted formats: '17:00', '05:00PM', '10:00 AM'): ");
-                endTimeInput = Console.ReadLine();
-                endTime = service.GetTimeSpanFromString(endTimeInput);
-                
-            } while (!service.IsInputTimeFormatValid(endTimeInput) || !service.IsEndTimeValid(endTime) || !service.IsEndTimeAfterStartTime(startTime, endTime));
-            */
         }
     }
 }
