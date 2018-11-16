@@ -94,13 +94,11 @@ namespace BabySitter.App
                 }
 
                 double result = _service.GetTotalEarnings(roundUpHours, familyIdInput, startTime, endTime);
-
                 Console.WriteLine("\nFamily " + familyIdInput + " owes you " + result.ToString("C") + " for your work tonight.");
 
                 Console.Write("\nWould you like to calculate earnings for another shift? (Y/N)");
 
                 string again = Console.ReadLine();
-
                 if (again.ToUpper().Equals("N"))
                 {
                     Console.WriteLine("Goodbye.");
