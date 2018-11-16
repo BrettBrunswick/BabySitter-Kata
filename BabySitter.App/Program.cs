@@ -14,16 +14,15 @@ namespace BabySitter.App
         {
             BabySitterService _service = new BabySitterService();
 
-            string familyIdInput = "";
-            string startTimeInput = "";
-            string endTimeInput = "";
-            TimeSpan startTime = new TimeSpan();
-            TimeSpan endTime = new TimeSpan();
-
             bool isRunning = true;
-
             while (isRunning)
             {
+                string familyIdInput = "";
+                string startTimeInput = "";
+                string endTimeInput = "";
+                TimeSpan startTime = new TimeSpan();
+                TimeSpan endTime = new TimeSpan();
+
                 Console.WriteLine(INTRODUCTION);
 
                 bool isFamilyInputValid = false;
@@ -41,8 +40,8 @@ namespace BabySitter.App
                     }
                 }
 
-                bool isStartTimeValid = false;
-                while (!isStartTimeValid)
+                bool isStartTimeInputValid = false;
+                while (!isStartTimeInputValid)
                 {
                     Console.WriteLine("What time did you go into work tonight? (If entering a PM time, please specify PM or use military time.): ");
                     startTimeInput = Console.ReadLine();
@@ -57,7 +56,7 @@ namespace BabySitter.App
 
                     if (_service.IsStartTimeValid(startTime))
                     {
-                        isStartTimeValid = true;
+                        isStartTimeInputValid = true;
                     } else 
                     {
                         Console.WriteLine("Oops. You aren't supposed to go into work before 5:00PM, remember?");
@@ -65,8 +64,42 @@ namespace BabySitter.App
                     }
                 }
 
+                bool isEndTimeInputValid = false;
+                while (!isEndTimeInputValid)
+                {
+                    Console.WriteLine("What time did you leave work tonight?: ");
+                    endTimeInput = Console.ReadLine();
 
-                isRunning = false;
+                     if (_service.IsInputTimeFormatValid(endTimeInput))
+                    {
+                        endTime = _service.GetTimeSpanFromString(endTimeInput);
+                    } else
+                    {
+                        Console.WriteLine("Oops. It appears " + endTimeInput + " is not in the correct format.\nPlease enter time in one of the following formats: " + VALID_TIME_FORMATS);
+                    }
+
+                    if (_service.IsEndTimeValid(endTime) && _service.IsEndTimeAfterStartTime(startTime, endTime))
+                    {
+                        isEndTimeInputValid = true;
+                    } else
+                    {
+                        Console.WriteLine("Oops. The time you entered is invalid. You must leave work before 4:00AM and you must leave after you went in.");
+                    }
+                }
+
+                double result = _service.GetTotalEarnings(familyIdInput, startTime, endTime);
+
+                Console.WriteLine("Family " + familyIdInput + " owes you " + result.ToString("C") + " for your work tonight.");
+
+                Console.Write("Would you like to calculate earnings for another shift? (Y/N)");
+
+                string again = Console.ReadLine();
+
+                if (again.ToUpper().Equals("N"))
+                {
+                    Console.WriteLine("Goodbye.");
+                    isRunning = false;
+                }             
             }
 
 
@@ -87,7 +120,7 @@ namespace BabySitter.App
                 startTimeInput = Console.ReadLine();
                 startTime = service.GetTimeSpanFromString(startTimeInput);
                 
-            } while (!service.IsInputTimeFormatValid(startTimeInput) || !service.IsStartTimeValid(startTime));
+            } while (!service.IsInputTimeFormatValid(startTimeInput) || !service.isStartTimeInputValid(startTime));
 
             do 
             {
