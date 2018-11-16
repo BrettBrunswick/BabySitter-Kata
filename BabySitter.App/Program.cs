@@ -8,10 +8,11 @@ namespace BabySitter.App
 
         private const string INTRODUCTION = "Hi, welcome back.\nI hope work went well tonight.";
 
+        private const string VALID_TIME_FORMATS = "17:00, 5:00PM, 5:00 PM";
+
         static void Main(string[] args)
         {
-            BabySitterService service = new BabySitterService();
-            Console.WriteLine(INTRODUCTION);
+            BabySitterService _service = new BabySitterService();
 
             string familyIdInput = "";
             string startTimeInput = "";
@@ -19,7 +20,61 @@ namespace BabySitter.App
             TimeSpan startTime = new TimeSpan();
             TimeSpan endTime = new TimeSpan();
 
-            do 
+            bool isRunning = true;
+
+            while (isRunning)
+            {
+                Console.WriteLine(INTRODUCTION);
+
+                bool isFamilyInputValid = false;
+                while (!isFamilyInputValid)
+                {
+                    Console.Write("Which family did you work for tonight?: ");
+                    familyIdInput = Console.ReadLine();
+
+                    if (_service.IsValidFamily(familyIdInput))
+                    {
+                        isFamilyInputValid = true;
+                    } else 
+                    {
+                        Console.WriteLine("Oops. It appears " + familyIdInput + " is not one of your active clients.");
+                    }
+                }
+
+                bool isStartTimeValid = false;
+                while (!isStartTimeValid)
+                {
+                    Console.WriteLine("What time did you go into work tonight? (If entering a PM time, please specify PM or use military time.): ");
+                    startTimeInput = Console.ReadLine();
+
+                    if (_service.IsInputTimeFormatValid(startTimeInput))
+                    {
+                        startTime = _service.GetTimeSpanFromString(startTimeInput);
+                    } else
+                    {
+                        Console.WriteLine("Oops. It appears " + startTimeInput + " is not in the correct format.\nPlease enter time in one of the following formats: " + VALID_TIME_FORMATS);
+                    }
+
+                    if (_service.IsStartTimeValid(startTime))
+                    {
+                        isStartTimeValid = true;
+                    } else 
+                    {
+                        Console.WriteLine("Oops. You aren't supposed to go into work before 5:00PM, remember?");
+
+                    }
+                }
+
+
+                isRunning = false;
+            }
+
+
+
+
+
+
+            /* do 
             {
                 Console.Write("What family did you work for tonight? (A, B, or C): ");
                 familyIdInput = Console.ReadLine();
@@ -41,6 +96,7 @@ namespace BabySitter.App
                 endTime = service.GetTimeSpanFromString(endTimeInput);
                 
             } while (!service.IsInputTimeFormatValid(endTimeInput) || !service.IsEndTimeValid(endTime) || !service.IsEndTimeAfterStartTime(startTime, endTime));
+            */
         }
     }
 }
