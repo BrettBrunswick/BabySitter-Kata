@@ -6,7 +6,7 @@ namespace BabySitter.App
     class Program
     {
 
-        private const string INTRODUCTION = "Hi, welcome back.\nI hope work went well tonight.";
+        private const string INTRODUCTION = "\nHi, welcome back.\nI hope work went well tonight.\n";
 
         private const string VALID_TIME_FORMATS = "17:00, 5:00PM, 5:00 PM";
 
@@ -26,6 +26,11 @@ namespace BabySitter.App
 
                 Console.WriteLine(INTRODUCTION);
 
+                bool roundUpHours = false;
+                Console.Write("Should we round up hours worked? (Enter Y for Yes. Enter anything else for No.): ");
+                roundUpHoursInput = Console.ReadLine();
+                if (roundUpHoursInput.ToUpper().Equals("Y")) roundUpHours = true;
+
                 bool isFamilyInputValid = false;
                 while (!isFamilyInputValid)
                 {
@@ -41,15 +46,10 @@ namespace BabySitter.App
                     }
                 }
 
-                bool roundUpHours = false;
-                Console.WriteLine("Should we round up hours worked? (Enter Y for Yes. Enter anything else for No.): ");
-                roundUpHoursInput = Console.ReadLine();
-                if (roundUpHoursInput.ToUpper().Equals("Y")) roundUpHours = true;
-
                 bool isStartTimeInputValid = false;
                 while (!isStartTimeInputValid)
                 {
-                    Console.WriteLine("What time did you go into work tonight? (If entering a PM time, please specify PM or use military time.): ");
+                    Console.WriteLine("\nWhat time did you go into work tonight? (If entering a PM time, please specify PM or use military time.): ");
                     startTimeInput = Console.ReadLine();
 
                     if (_service.IsInputTimeFormatValid(startTimeInput))
@@ -73,7 +73,7 @@ namespace BabySitter.App
                 bool isEndTimeInputValid = false;
                 while (!isEndTimeInputValid)
                 {
-                    Console.WriteLine("What time did you leave work tonight?: ");
+                    Console.WriteLine("\nWhat time did you leave work tonight?: ");
                     endTimeInput = Console.ReadLine();
 
                      if (_service.IsInputTimeFormatValid(endTimeInput))
@@ -95,9 +95,9 @@ namespace BabySitter.App
 
                 double result = _service.GetTotalEarnings(roundUpHours, familyIdInput, startTime, endTime);
 
-                Console.WriteLine("Family " + familyIdInput + " owes you " + result.ToString("C") + " for your work tonight.");
+                Console.WriteLine("\nFamily " + familyIdInput + " owes you " + result.ToString("C") + " for your work tonight.");
 
-                Console.Write("Would you like to calculate earnings for another shift? (Y/N)");
+                Console.Write("\nWould you like to calculate earnings for another shift? (Y/N)");
 
                 string again = Console.ReadLine();
 
