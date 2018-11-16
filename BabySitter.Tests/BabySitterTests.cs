@@ -345,7 +345,7 @@ namespace BabySitter.Tests
         public void WhenStartTimeAndEndTimeIsPassedAndEndIsAfterStart3_ShouldReturnTrue()
         {
             TimeSpan startTime = new TimeSpan(17, 00, 00);
-            TimeSpan endTime = new TimeSpan(2, 00, 00);
+            TimeSpan endTime = new TimeSpan(26, 00, 00);
             Assert.True(_service.IsEndTimeAfterStartTime(startTime, endTime));
         }
 
@@ -360,16 +360,16 @@ namespace BabySitter.Tests
         [Fact]
         public void WhenStartTimeAndEndTimeIsPassedAndEndIsAfterStart2_ShouldReturnFalse()
         {
-            TimeSpan startTime = new TimeSpan(2, 00, 00);
-            TimeSpan endTime = new TimeSpan(1, 00, 00);
+            TimeSpan startTime = new TimeSpan(26, 00, 00);
+            TimeSpan endTime = new TimeSpan(25, 00, 00);
             Assert.False(_service.IsEndTimeAfterStartTime(startTime, endTime));
         }
 
         [Fact]
         public void WhenStartTimeAndEndTimeIsPassedAndEndIsAfterStart3_ShouldReturnFalse()
         {
-            TimeSpan startTime = new TimeSpan(03, 00, 00);
-            TimeSpan endTime = new TimeSpan(02, 59,  00);
+            TimeSpan startTime = new TimeSpan(27, 00, 00);
+            TimeSpan endTime = new TimeSpan(26, 59,  00);
             Assert.False(_service.IsEndTimeAfterStartTime(startTime, endTime));
         }
 
