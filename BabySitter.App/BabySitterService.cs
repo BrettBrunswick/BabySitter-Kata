@@ -133,23 +133,16 @@ namespace BabySitter.App
             return result;
         }
 
-        //Rounding up if worked more than a half hour.
-        public int GetNumberOfHoursWorkedRoundedUp(TimeSpan startTime, TimeSpan endTime)
+        public int GetNumberOfHoursWorked(bool roundUp, TimeSpan startTime, TimeSpan endTime)
         {
             var timeDifference = endTime.Subtract(startTime);
-            if (timeDifference.TotalHours % 1 >= 0.5)
+            if (roundUp && timeDifference.TotalHours % 1 >= 0.5)
             {
                 return timeDifference.Add(ONE_HOUR).Hours;
             } else
             {
                 return timeDifference.Hours;
             }
-        }
-
-        //Rounding up if worked more than a half hour.
-        public int GetNumberOfHoursWorkedNotRoundedUp(TimeSpan startTime, TimeSpan endTime)
-        {
-            return endTime.Subtract(startTime).Hours;
         }
 
         private List<PayPeriod> GetPayPeriodsBabySitterWorkedIn(string familyId, TimeSpan startTime, TimeSpan endTime)
@@ -178,12 +171,7 @@ namespace BabySitter.App
                 endTimeToUse = endTime;
             }
 
-            if (roundUpHours)
-            {
-                return GetNumberOfHoursWorkedRoundedUp(startTimeToUse, endTimeToUse) * payPeriod.PricePerHour;
-            } else {
-                return GetNumberOfHoursWorkedNotRoundedUp(startTimeToUse, endTimeToUse) * payPeriod.PricePerHour;
-            }
+            return GetNumberOfHoursWorked(roundUpHours, startTimeToUse, endTimeToUse) * payPeriod.PricePerHour;
         }
 
         private TimeSpan AddDayToTimeSpanIfInMorning (TimeSpan time)

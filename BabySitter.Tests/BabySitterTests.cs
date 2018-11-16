@@ -22,7 +22,7 @@ namespace BabySitter.Tests
         {
             TimeSpan startTime = new TimeSpan(17,00,00);
             TimeSpan endTime = new TimeSpan(20,00,00);
-            Assert.Equal(3, _service.GetNumberOfHoursWorkedRoundedUp(startTime, endTime));
+            Assert.Equal(3, _service.GetNumberOfHoursWorked(true, startTime, endTime));
         }
 
         [Fact]
@@ -30,7 +30,7 @@ namespace BabySitter.Tests
         {
             TimeSpan startTime = new TimeSpan(17,01,00);
             TimeSpan endTime = new TimeSpan(21,00,00);
-            Assert.Equal(4, _service.GetNumberOfHoursWorkedRoundedUp(startTime, endTime));
+            Assert.Equal(4, _service.GetNumberOfHoursWorked(true, startTime, endTime));
         }
 
         [Fact]
@@ -38,7 +38,7 @@ namespace BabySitter.Tests
         {
             TimeSpan startTime = new TimeSpan(17,29,00);
             TimeSpan endTime = new TimeSpan(22,00,00);
-            Assert.Equal(5, _service.GetNumberOfHoursWorkedRoundedUp(startTime, endTime));
+            Assert.Equal(5, _service.GetNumberOfHoursWorked(true, startTime, endTime));
         }
 
         [Fact]
@@ -46,7 +46,7 @@ namespace BabySitter.Tests
         {
             TimeSpan startTime = new TimeSpan(17,31,00);
             TimeSpan endTime = new TimeSpan(22,00,00);
-            Assert.Equal(4, _service.GetNumberOfHoursWorkedRoundedUp(startTime, endTime));
+            Assert.Equal(4, _service.GetNumberOfHoursWorked(true, startTime, endTime));
         }
 
         [Fact]
@@ -54,7 +54,7 @@ namespace BabySitter.Tests
         {
             TimeSpan startTime = new TimeSpan(20,30,01);
             TimeSpan endTime = new TimeSpan(24,00,00);
-            Assert.Equal(3, _service.GetNumberOfHoursWorkedRoundedUp(startTime, endTime));
+            Assert.Equal(3, _service.GetNumberOfHoursWorked(true, startTime, endTime));
         }
 
         [Fact]
@@ -62,7 +62,7 @@ namespace BabySitter.Tests
         {
             TimeSpan startTime = new TimeSpan(23,00,00);
             TimeSpan endTime = new TimeSpan(25,00,00);
-            Assert.Equal(2, _service.GetNumberOfHoursWorkedRoundedUp(startTime, endTime));
+            Assert.Equal(2, _service.GetNumberOfHoursWorked(true, startTime, endTime));
         }
 
         [Fact]
@@ -70,7 +70,7 @@ namespace BabySitter.Tests
         {
             TimeSpan startTime = new TimeSpan(23,30,00);
             TimeSpan endTime = new TimeSpan(28,00,00);
-            Assert.Equal(5, _service.GetNumberOfHoursWorkedRoundedUp(startTime, endTime));
+            Assert.Equal(5, _service.GetNumberOfHoursWorked(true, startTime, endTime));
         }
 
         #endregion
