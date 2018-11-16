@@ -409,7 +409,7 @@ namespace BabySitter.Tests
         public void WhenValidStringIsPassedInReturnCorrectTimeSpan4_ShouldReturnTrue()
         {
             string time = "1:00 aM";
-            TimeSpan shouldBeTime = new TimeSpan(1, 00, 00);
+            TimeSpan shouldBeTime = new TimeSpan(25, 00, 00);
             Assert.Equal(shouldBeTime, _service.GetTimeSpanFromString(time));
         }
 
@@ -422,18 +422,10 @@ namespace BabySitter.Tests
         }
 
         [Fact]
-        public void WhenValidStringIsPassedInReturnCorrectTimeSpan6_ShouldReturnTrue()
-        {
-            string time = "6:00am";
-            TimeSpan shouldBeTime = new TimeSpan(6, 00, 00);
-            Assert.Equal(shouldBeTime, _service.GetTimeSpanFromString(time));
-        }
-
-        [Fact]
         public void WhenValidStringIsPassedInReturnCorrectTimeSpan7_ShouldReturnTrue()
         {
             string time = "12:00am";
-            TimeSpan shouldBeTime = new TimeSpan(0, 00, 00);
+            TimeSpan shouldBeTime = new TimeSpan(24, 00, 00);
             Assert.Equal(shouldBeTime, _service.GetTimeSpanFromString(time));
         }
 
@@ -513,8 +505,8 @@ namespace BabySitter.Tests
         public void WhenPassedAFamilyAAndStartAndEndTimeReturnEarnings_ShouldBe60()
         {
             string familyId = "A";
-            TimeSpan startTime = new TimeSpan(01, 00, 00);
-            TimeSpan endTime = new TimeSpan(04, 00, 00);
+            TimeSpan startTime = new TimeSpan(25, 00, 00);
+            TimeSpan endTime = new TimeSpan(28, 00, 00);
             Assert.Equal(60, _service.GetTotalEarnings(familyId, startTime, endTime));
         }
 
@@ -522,8 +514,8 @@ namespace BabySitter.Tests
         public void WhenPassedAFamilyAAndStartAndEndTimeReturnEarnings_ShouldBe80()
         {
             string familyId = "A";
-            TimeSpan startTime = new TimeSpan(00, 00, 00);
-            TimeSpan endTime = new TimeSpan(04, 00, 00);
+            TimeSpan startTime = new TimeSpan(24, 00, 00);
+            TimeSpan endTime = new TimeSpan(28, 00, 00);
             Assert.Equal(80, _service.GetTotalEarnings(familyId, startTime, endTime));
         }
 
@@ -531,8 +523,8 @@ namespace BabySitter.Tests
         public void WhenPassedAFamilyAAndStartAndEndTimeReturnEarnings_ShouldBe80_2()
         {
             string familyId = "A";
-            TimeSpan startTime = new TimeSpan(00, 25, 00);
-            TimeSpan endTime = new TimeSpan(04, 00, 00);
+            TimeSpan startTime = new TimeSpan(24, 25, 00);
+            TimeSpan endTime = new TimeSpan(28, 00, 00);
             Assert.Equal(80, _service.GetTotalEarnings(familyId, startTime, endTime));
         }
 
@@ -541,7 +533,7 @@ namespace BabySitter.Tests
         {
             string familyId = "A";
             TimeSpan startTime = new TimeSpan(22, 00, 00);
-            TimeSpan endTime = new TimeSpan(0, 00, 00);
+            TimeSpan endTime = new TimeSpan(24, 00, 00);
             Assert.Equal(35, _service.GetTotalEarnings(familyId, startTime, endTime));
         }
 
@@ -559,7 +551,7 @@ namespace BabySitter.Tests
         {
             string familyId = "b";
             TimeSpan startTime = new TimeSpan(21, 00, 00);
-            TimeSpan endTime = new TimeSpan(1, 00, 00);
+            TimeSpan endTime = new TimeSpan(25, 00, 00);
             Assert.Equal(44, _service.GetTotalEarnings(familyId, startTime, endTime));
         }
 
@@ -568,7 +560,7 @@ namespace BabySitter.Tests
         {
             string familyId = "c";
             TimeSpan startTime = new TimeSpan(17, 30, 00);
-            TimeSpan endTime = new TimeSpan(4, 00, 00);
+            TimeSpan endTime = new TimeSpan(28, 00, 00);
             Assert.Equal(189, _service.GetTotalEarnings(familyId, startTime, endTime));
         }
 
@@ -577,7 +569,7 @@ namespace BabySitter.Tests
         {
             string familyId = "c";
             TimeSpan startTime = new TimeSpan(17, 31, 00);
-            TimeSpan endTime = new TimeSpan(4, 00, 00);
+            TimeSpan endTime = new TimeSpan(28, 00, 00);
             Assert.Equal(168, _service.GetTotalEarnings(familyId, startTime, endTime));
         }
 

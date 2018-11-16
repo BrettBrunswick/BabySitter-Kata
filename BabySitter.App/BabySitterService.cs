@@ -94,11 +94,11 @@ namespace BabySitter.App
         {
             if (TimeSpan.TryParseExact(inputTime, VALID_TIME_FORMATS, null, out OutTime))
             {
-                return TimeSpan.Parse(inputTime);
+                return AddDayToTimeSpanIfInMorning(TimeSpan.Parse(inputTime));
             }
             else
             {
-                return GetTimeSpanFromStringWithAMPMFormat(inputTime);
+                return AddDayToTimeSpanIfInMorning(GetTimeSpanFromStringWithAMPMFormat(inputTime));
             }
         }
 
