@@ -30,7 +30,7 @@ namespace BabySitter.App
                     new List<PayPeriod>
                     {
                         (new PayPeriod (15, new TimeSpan(17, 00, 00), new TimeSpan(23, 00, 00))),
-                        (new PayPeriod (20, new TimeSpan(23, 00, 00), new TimeSpan(4, 00, 00)))
+                        (new PayPeriod (20, new TimeSpan(23, 00, 00), new TimeSpan(28, 00, 00)))
                     }
                 ),
                 new Family
@@ -39,8 +39,8 @@ namespace BabySitter.App
                     new List<PayPeriod>
                     {
                         (new PayPeriod (12, new TimeSpan(17, 00, 00), new TimeSpan(22, 00, 00))),
-                        (new PayPeriod (8, new TimeSpan(22, 00, 00), new TimeSpan(0, 00, 00))),
-                        (new PayPeriod (16, new TimeSpan(0, 00, 00), new TimeSpan(4, 00, 00)))
+                        (new PayPeriod (8, new TimeSpan(22, 00, 00), new TimeSpan(24, 00, 00))),
+                        (new PayPeriod (16, new TimeSpan(24, 00, 00), new TimeSpan(28, 00, 00)))
                     }
                 ),
                 new Family
@@ -49,7 +49,7 @@ namespace BabySitter.App
                     new List<PayPeriod>
                     {
                         (new PayPeriod (21, new TimeSpan(17, 00, 00), new TimeSpan(21, 00, 00))),
-                        (new PayPeriod (15, new TimeSpan(21, 00, 00), new TimeSpan(4, 00, 00)))
+                        (new PayPeriod (15, new TimeSpan(21, 00, 00), new TimeSpan(28, 00, 00)))
                     }
                 ),
             };
@@ -137,19 +137,18 @@ namespace BabySitter.App
         public int GetNumberOfHoursWorked(TimeSpan startTime, TimeSpan endTime)
         {
             var timeDifference = endTime.Subtract(startTime);
-            var timeWorked = AddDayToTimeSpanIfInMorning(timeDifference);
-            if (timeWorked.TotalHours % 1 >= 0.5)
+            if (timeDifference.TotalHours % 1 >= 0.5)
             {
-                return timeWorked.Add(ONE_HOUR).Hours;
+                return timeDifference.Add(ONE_HOUR).Hours;
             } else
             {
-                return timeWorked.Hours;
+                return timeDifference.Hours;
             }
         }
 
         private List<PayPeriod> GetPayPeriodsBabySitterWorkedIn(string familyId, TimeSpan startTime, TimeSpan endTime)
         {
-            return FAMILIES.First(x => x.Id.Equals(familyId.ToUpper())).PayPeriods.Where(t => AddDayToTimeSpanIfInMorning(startTime) <= AddDayToTimeSpanIfInMorning(t.EndTime) && AddDayToTimeSpanIfInMorning(endTime) >= AddDayToTimeSpanIfInMorning(t.StartTime)).ToList();
+            return FAMILIES.First(x => x.Id.Equals(familyId.ToUpper())).PayPeriods.Where(t => startTime <= t.EndTime && endTime >= t.StartTime).ToList();
         }
 
         private double GetEarningsByPayPeriod(PayPeriod payPeriod, TimeSpan startTime, TimeSpan endTime)
@@ -157,7 +156,7 @@ namespace BabySitter.App
             var startTimeToUse = new TimeSpan();
             var endTimeToUse = new TimeSpan();
 
-            if (AddDayToTimeSpanIfInMorning(startTime) > AddDayToTimeSpanIfInMorning(payPeriod.StartTime))
+            if ((startTime) > (payPeriod.StartTime))
             {
                 startTimeToUse = startTime;
             } else 
@@ -165,7 +164,7 @@ namespace BabySitter.App
                 startTimeToUse = payPeriod.StartTime;
             }
 
-            if (AddDayToTimeSpanIfInMorning(endTime) > AddDayToTimeSpanIfInMorning(payPeriod.EndTime))
+            if ((endTime) > (payPeriod.EndTime))
             {
                 endTimeToUse = payPeriod.EndTime;
             } else 

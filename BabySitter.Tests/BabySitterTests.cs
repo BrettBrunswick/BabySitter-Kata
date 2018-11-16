@@ -61,7 +61,7 @@ namespace BabySitter.Tests
         public void WhenATimeRangeIsPassedWithEndTimeTheNextDayReturnsNumberOfHoursWorked_ShouldBe2()
         {
             TimeSpan startTime = new TimeSpan(23,00,00);
-            TimeSpan endTime = new TimeSpan(1,00,00);
+            TimeSpan endTime = new TimeSpan(25,00,00);
             Assert.Equal(2, _service.GetNumberOfHoursWorked(startTime, endTime));
         }
 
@@ -69,7 +69,7 @@ namespace BabySitter.Tests
         public void WhenATimeRangeIsPassedWithEndTimeTheNextDayReturnsNumberOfHoursWorked_ShouldBe5()
         {
             TimeSpan startTime = new TimeSpan(23,30,00);
-            TimeSpan endTime = new TimeSpan(4,00,00);
+            TimeSpan endTime = new TimeSpan(28,00,00);
             Assert.Equal(5, _service.GetNumberOfHoursWorked(startTime, endTime));
         }
 
